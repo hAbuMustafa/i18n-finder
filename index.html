@@ -7,13 +7,30 @@
     <title>I18n Assistant</title>
   </head>
   <body>
-    <h1>Term Search</h1>
-    <label for="term">
-      المصطلح:
-      <input id="term" type="text" placeholder="اكتب المصطلح الإنجليزي..." dir="ltr" />
-    </label>
-    <p id="results"></p>
+    <main>
+      <h1>Tech-Term Finder</h1>
 
+      <input
+        id="term"
+        type="text"
+        placeholder="اكتب المصطلح الإنجليزي..."
+        dir="ltr"
+        aria-label="المصطلح" />
+
+      <p id="results"></p>
+    </main>
+
+    <footer dir="ltr">
+      This project is open source at
+      <a href="https://github.com/hAbuMustafa/i18n-finder">Github</a>.<br />
+      This project leverages the use of the i18n dictionary by
+      <a
+        href="https://github.com/softvenue/i18n"
+        target="_blank"
+        rel="noopener noreferrer"
+        >softvenue</a
+      >.
+    </footer>
     <script>
       const terms = [];
       const term = document.querySelector('#term');
@@ -58,11 +75,15 @@
     </script>
 
     <style>
-      body {
+      main {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+
+      #term {
+        font-size: 2rem;
       }
 
       #results {
@@ -97,6 +118,24 @@
 
       .result:nth-of-type(odd) {
         background-color: rgba(188, 252, 230, 0.8);
+      }
+
+      footer {
+        color: grey;
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        border-top: dashed grey 1px;
+        margin: auto 0px;
+        bottom: 0px;
+      }
+
+      footer a {
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      footer a:visited {
+        color: rgba(100, 100, 100, 0.4);
       }
     </style>
   </body>
