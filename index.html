@@ -47,14 +47,18 @@
       getTerms();
 
       term.addEventListener('input', (e) => {
-        if (e.target.value === '' || e.target.value.length < 3) return;
-        results.innerHTML = terms
-          .filter((item) =>
-            item.term.toLowerCase().includes(e.target.value.toLowerCase())
-          )
-          //.map((item) => (Array.isArray(item.wAR) ? {...item,wAR:item.wAR.join('\n')} : {...item}))
-          .map(
-            (item) => `
+        if (e.target.value === '' || e.target.value.length < 3) {
+          results.innerHTML = '';
+          return;
+        }
+        const filteredResults = terms.filter((item) =>
+          item.term.toLowerCase().includes(e.target.value.toLowerCase())
+        );
+        //.map((item) => (Array.isArray(item.wAR) ? {...item,wAR:item.wAR.join('\n')} : {...item}))
+        results.innerHTML = filteredResults.length
+          ? filteredResults
+              .map(
+                (item) => `
             <div class="result">
               <h4 dir="ltr">🔤 ${item.term}</h4>
               <ul>
@@ -66,8 +70,13 @@
               </ul>
             </div>
           `
-          )
-          .join('');
+              )
+              .join('')
+          : `
+          <div class="no-results">
+            لا توجد نتيجة للبحث المطلوب: ${e.target.value}
+          </div>
+          `;
       });
 
       term.focus();
@@ -120,7 +129,14 @@
         background-color: rgba(188, 252, 230, 0.8);
       }
 
+      .no-results {
+        direction: rtl;
+        text-align: center;
+      }
+
       footer {
+        overflow: visible;
+        background: linear-gradient(to top, #ffffffff 0%, #ffffff00 150%);
         color: grey;
         position: fixed;
         width: 100%;
