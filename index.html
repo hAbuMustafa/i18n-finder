@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I18n Assistant</title>
+  </head>
+  <body>
+    <h1>Term Search</h1>
+    <label for="term">
+      المصطلح:
+      <input id="term" type="text" placeholder="اكتب المصطلح الإنجليزي..." dir="ltr" />
+    </label>
+    <p id="results"></p>
+
+    <script>
+      const terms = [];
+      const term = document.querySelector('#term');
+      const results = document.querySelector('#results');
+
+      async function getTerms() {
+        return await fetch(
+          'https://raw.githubusercontent.com/softvenue/i18n/master/i18n.json'
+        )
+          .then((response) => response.json())
+          .then((data) => terms.push(...data));
+      }
+
+      getTerms();
+
+      term.addEventListener('input', (e) => {
+        if (e.target.value === '' || e.target.value.length < 3) return;
+        results.innerHTML = terms
+          .filter((item) =>
+            item.term.toLowerCase().includes(e.target.value.toLowerCase())
+          )
+          //.map((item) => (Array.isArray(item.wAR) ? {...item,wAR:item.wAR.join('\n')} : {...item}))
+          .map(
+            (item) => `
+            <div class="result">
+              <h4 dir="ltr">🔤 ${item.term}</h4>
+              <ul>
+                  ${
+                    Array.isArray(item.wAR)
+                      ? item.wAR.map((meaning) => `<li>${meaning}</li>`).join('')
+                      : `<li>${item.wAR}</li>`
+                  }
+              </ul>
+            </div>
+          `
+          )
+          .join('');
+      });
+    </script>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #results {
+        width: 60%;
+        direction: ltr;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+      }
+
+      #results ul {
+        direction: rtl;
+      }
+
+      .result h4 {
+        width: 100%;
+        margin-top: 1px;
+        border-bottom: solid 1px black;
+      }
+
+      /* .result {
+        border-top: dashed black 1px;
+      }
+
+      .result:first-of-type {
+        border-top: none;
+      } */
+
+      .result:nth-of-type(even) {
+        background-color: rgba(188, 252, 230, 0.3);
+      }
+
+      .result:nth-of-type(odd) {
+        background-color: rgba(188, 252, 230, 0.8);
+      }
+    </style>
+  </body>
+</html>
