@@ -1,0 +1,11 @@
+{
+  "name": "tech-i18n-ar",
+  "version": "1.0.0",
+  "description": "Internationalization assistant interface for tech terms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hAbuMustafa",
+  "license": "MIT"
+}
