@@ -53,7 +53,6 @@
         const filteredResults = terms.filter((item) =>
           item.term.toLowerCase().includes(e.target.value.toLowerCase())
         );
-        //.map((item) => (Array.isArray(item.wAR) ? {...item,wAR:item.wAR.join('\n')} : {...item}))
         results.innerHTML = filteredResults.length
           ? filteredResults
               .map(
@@ -111,14 +110,6 @@
         margin-top: 1px;
         border-bottom: solid 1px black;
       }
-
-      /* .result {
-        border-top: dashed black 1px;
-      }
-
-      .result:first-of-type {
-        border-top: none;
-      } */
 
       .result:nth-of-type(even) {
         background-color: rgba(188, 252, 230, 0.3);
