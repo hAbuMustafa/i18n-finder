@@ -77,8 +77,20 @@
           `;
       });
 
-      term.focus();
-      document.addEventListener('click', () => term.focus());
+      function lockFocus() {
+        term.focus();
+        term.select();
+      }
+
+      lockFocus();
+
+      document.addEventListener('click', () => {
+        lockFocus();
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') lockFocus();
+      });
     </script>
 
     <style>
