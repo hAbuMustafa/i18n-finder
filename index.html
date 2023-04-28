@@ -37,15 +37,13 @@
       const term = document.querySelector('#term');
       const results = document.querySelector('#results');
 
-      async function getTerms() {
+      (async function getTerms() {
         return await fetch(
           'https://raw.githubusercontent.com/softvenue/i18n/master/i18n.json'
         )
           .then((response) => response.json())
           .then((data) => terms.push(...data));
-      }
-
-      getTerms();
+      })();
 
       term.addEventListener('input', (e) => {
         if (e.target.value === '' || e.target.value.length < 3) {
