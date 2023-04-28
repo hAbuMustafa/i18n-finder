@@ -15,7 +15,6 @@
         id="term"
         type="text"
         placeholder="اكتب المصطلح الإنجليزي..."
-        dir="ltr"
         aria-label="المصطلح" />
 
       <p id="results"></p>
@@ -46,11 +45,11 @@
       })();
 
       term.addEventListener('input', (e) => {
+        term.style.direction = e.target.value === '' ? 'rtl' : 'ltr';
         if (e.target.value === '' || e.target.value.length < 3) {
           results.innerHTML = '';
           return;
         }
-        term.style.direction = e.target.value === '' ? 'rtl' : 'ltr';
         const filteredResults = terms.filter((item) =>
           item.term.toLowerCase().includes(e.target.value.toLowerCase())
         );
