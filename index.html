@@ -50,6 +50,7 @@
           results.innerHTML = '';
           return;
         }
+        term.style.direction = e.target.value === '' ? 'rtl' : 'ltr';
         const filteredResults = terms.filter((item) =>
           item.term.toLowerCase().includes(e.target.value.toLowerCase())
         );
