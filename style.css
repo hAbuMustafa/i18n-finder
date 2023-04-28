@@ -1,0 +1,61 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#term {
+  font-size: 2rem;
+}
+
+#results {
+  width: 60%;
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+#results ul {
+  direction: rtl;
+}
+
+.result h4 {
+  width: 100%;
+  margin-top: 1px;
+  border-bottom: solid 1px black;
+}
+
+.result:nth-of-type(even) {
+  background-color: rgba(188, 252, 230, 0.3);
+}
+
+.result:nth-of-type(odd) {
+  background-color: rgba(188, 252, 230, 0.8);
+}
+
+.no-results {
+  direction: rtl;
+  text-align: center;
+}
+
+footer {
+  overflow: visible;
+  background: linear-gradient(to top, #ffffffff 0%, #ffffff00 150%);
+  color: grey;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  border-top: dashed grey 1px;
+  margin: auto 0px;
+  bottom: 0px;
+}
+
+footer a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+footer a:visited {
+  color: rgba(100, 100, 100, 0.4);
+}
