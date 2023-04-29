@@ -9,6 +9,14 @@ main {
   font-size: 2rem;
 }
 
+#term:invalid {
+  color: red;
+  font-family: cursive;
+  text-decoration: line-through underline;
+  border: red dashed 1px;
+  outline: none;
+}
+
 #results {
   width: 60%;
   direction: ltr;
