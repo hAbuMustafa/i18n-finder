@@ -22,7 +22,10 @@ term.addEventListener('input', (e) => {
         .map(
           (item) => `
       <div class="result">
-        <h4 dir="ltr">🔤 ${item.term}</h4>
+        <h4 dir="ltr">🔤 ${item.term.replace(
+          new RegExp(e.target.value, 'gi'),
+          `<span class="hl">${e.target.value.toUpperCase()}</span>`
+        )}</h4>
         <ul>
             ${
               Array.isArray(item.wAR)

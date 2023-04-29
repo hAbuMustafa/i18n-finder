@@ -67,3 +67,7 @@ footer a {
 footer a:visited {
   color: rgba(100, 100, 100, 0.4);
 }
+
+.hl {
+  background: #ffc600;
+}
